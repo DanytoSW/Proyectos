@@ -1,0 +1,520 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/Winwheel.min.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/jQuery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<style>
+    body{
+        background-image: url('https://www.muycomputer.com/wp-content/uploads/2020/11/estadisticas.jpg');
+        background-size: 100vw 100vh;/*escala automa el ancho y el alto*/
+        background-attachment: fixed;/*para que la imagen de fondo no se mueva*/
+        margin: 0;
+    }
+    .container{
+        background: rgba(0,0,0,0.5);
+        width: 100%;
+        height: 624px;
+    }
+.imagen-responsive {
+        align-items: center;
+        width: 100%;
+        max-width: 700px;
+    }
+
+    #ultimo + div {
+        visibility: hidden;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <br><br><br>
+            <center><h1 STYLE="font-size: 30px;color:#ffffff">Juego de estadistica</h1> <br>
+                <hr style="border: 2px solid #ffffff;margin-top: -25px;margin-left: 50px;width: 550px">
+                <br><br><br><br><br>
+                <input type="button" value="Girar" onclick="miRuleta.startAnimation();" class="btn btn-success btn-lg"
+                       style="width: 200px;margin-left: 0px;border: 2px solid #ffffff">
+
+            </center>
+            <br><br>
+        </div>
+        <div class="col-md-6">
+            <canvas id="canvas" height="600px" width="600px">
+            </canvas>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    var miRuleta = new Winwheel({
+
+        'numSegments' : 12,
+        'outerRadius' : 270,
+        'segments':[
+            {'fillStyle': '#f1c40f', 'text': 'Pregunta 1'},
+            {'fillStyle': '#2ecc71', 'text': 'Pregunta 2'},
+            {'fillStyle': '#e67e22', 'text': 'Pregunta 3'},
+            {'fillStyle': '#e74c3c', 'text': 'Pregunta 4'},
+            {'fillStyle': '#8e44ad', 'text': 'Pregunta 5'},
+            {'fillStyle': '#f1c40f', 'text': 'Pregunta 6'},
+            {'fillStyle': '#2ecc71', 'text': 'Pregunta 7'},
+            {'fillStyle': '#e67e22', 'text': 'Pregunta 8'},
+            {'fillStyle': '#e74c3c', 'text': 'Pregunta 9'},
+            {'fillStyle': '#8e44ad', 'text': 'Pregunta 10'},
+            {'fillStyle': '#e67e22', 'text': 'Pregunta 11'},
+            {'fillStyle': '#e74c3c', 'text': 'Pregunta 12'},
+            {'fillStyle': '#8e44ad', 'text': 'Pregunta 13'},
+
+        ],
+        'animation':{
+            'type':'spinToStop',
+            'duration': 6,
+            'callbackFinished':'Mensaje()',
+            'callbackAfter':'dibujarIndicador()'
+        }
+    });
+
+    dibujarIndicador();
+    function Mensaje() {
+        var SegmentoSeleccionado = miRuleta.getIndicatedSegment();
+        alert("Listo para la  " + SegmentoSeleccionado.text);
+        if(SegmentoSeleccionado.text == "Pregunta 1"){
+            $('#myModal1').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 2"){
+            $('#myModal2').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 3"){
+            $('#myModal3').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 4"){
+            $('#myModal4').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 5"){
+            $('#myModal5').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 6"){
+            $('#myModal6').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 7"){
+            $('#myModal7').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 8"){
+            $('#myModal8').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 9"){
+            $('#myModal9').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 10"){
+            $('#myModal10').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 11"){
+            $('#myModal11').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 12"){
+            $('#myModal12').modal({backdrop:'static'});
+        }
+        if(SegmentoSeleccionado.text == "Pregunta 13"){
+            $('#myModal13').modal({backdrop:'static'});
+        }
+
+        miRuleta.stopAnimation(false);
+        miRuleta.rotationAngle = 0;
+        miRuleta.draw();
+        dibujarIndicador();
+    }
+    function dibujarIndicador() {
+        var ctx = miRuleta.ctx;
+        ctx.strokeStyle = 'navy';
+        ctx.fillStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(300,0);
+        ctx.lineTo(320,0);
+        ctx.lineTo(300,40);
+        ctx.lineTo(280,0);
+        ctx.stroke();
+        ctx.fill();
+    }
+
+
+
+</script>
+
+
+<!-- -->
+<!-- aqui introduccir la pregunta 1-->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">
+                        PREGUNTA 1</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center><h2> Cual es el numero de casos posibles si se lanzan 3 monedas? </h2></center>
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+
+            </div>
+        </div>
+        <br>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Large modal -->
+<!-- aqui introduccir la pregunta 2-->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">PREGUNTA 2</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center> <h2> Cual es el numero de casos posibles si se lanzan 2 dados?</h2></center>
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+
+            </div>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Large modal -->
+
+<!-- aqui introduccir la pregunta 3-->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">PREGUNTA 3</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center> <h2>Segun el conjunto, Cual es AUB?</h2></center>
+                <img src="3.jpeg" class="imagen-responsive">
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+
+            </div>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Large modal -->
+
+<!-- aqui introduccir la pregunta 4-->
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">PREGUNTA 4.</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center><h2>Segun el conjunto, cual es A∩B?</h2></center>
+                <img src="4.jpeg" class="imagen-responsive">
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+
+            </div>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Large modal -->
+
+<!-- aqui introduccir la pregunta 5-->
+<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">PREGUNTA 5.</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center> <h2>Segun el conjunto, cual es A∩B?</h2></center>
+                <img src="5.jpeg" class="imagen-responsive">
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- aqui introduccir la pregunta 6-->
+<div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">PREGUNTA 6.</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center> <h2>¿Cuál es el rango de los siguientes datos? </br> 112233456778999 </h2></center>
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- aqui introduccir la pregunta 7-->
+<div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">PREGUNTA 7.</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center> <h2>¿Cuál es la moda del anterior grupo de datos? </br> 112233456778999 </h2></center>
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- aqui introduccir la pregunta 8-->
+<div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">PREGUNTA 8.</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center> <h2>¿Cuál es la mediana del anterior grupo de datos? </br> 112233456778999 </h2></center>
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- aqui introduccir la pregunta 9-->
+<div class="modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">PREGUNTA 9.</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center> <h2>¿Cuál es la media del anterior grupo de datos? </br> 112233456778999 </h2></center>
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- aqui introduccir la pregunta 10-->
+<div class="modal fade" id="myModal10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">PREGUNTA 10.</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center> <h2>¿Cuál es el rango de los siguientes datos?</h2></center>
+                <img src="10.png" class="imagen-responsive">
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- aqui introduccir la pregunta 11-->
+<div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">PREGUNTA 11.</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center> <h2>¿Qué cantidad de intervalos tiene el anterior grupo de datos?</h2></center>
+                <img src="10.png" class="imagen-responsive">
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- aqui introduccir la pregunta 12-->
+<div class="modal fade" id="myModal12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  style="width: 90%;margin: auto">
+    <div class="modal-dialog" role="document" style="width: 90%;margin: auto">
+        <div class="modal-content" style="width: 90%;margin: auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center>
+                    <h2 class="modal-title" id="myModalLabel" style="color:#000">PREGUNTA 12.</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                <center> <h2>¿Cuál es el tamaño de los intervalos?</h2></center>
+                <img src="10.png" class="imagen-responsive">
+            </div>
+            </center>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Large modal -->
+
+
+
+<!-- *********************** SCRIPTS *********************************-->
+<script src="js/bootstrap.js"></script>
+<!-- *********************** SCRIPTS *********************************-->
+
+<div id="ultimo"></div>
+</body>
+</html>
