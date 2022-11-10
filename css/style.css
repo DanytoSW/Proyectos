@@ -1,0 +1,17 @@
+.Botones-finos button {
+    padding: 10 20px;
+    margin: 5px;
+    background-color: grey;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.Botones-finos button:hover {
+    background-color: red;
+}
+
+#buenisimo:hover {
+    background-color: green;
+}
